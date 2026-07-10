@@ -1,112 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paolo Grazieschi | Research Data Scientist</title>
-    <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; background: #fff; }
-        header { border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 40px; }
-        h1 { margin: 0; font-size: 2.5em; text-transform: uppercase; letter-spacing: 2px; }
-        h2 { font-size: 1.2em; color: #666; margin-top: 5px; }
-        .contact { margin-top: 10px; font-size: 0.9em; }
-        section { margin-bottom: 40px; }
-        h3 { border-left: 4px solid #000; padding-left: 15px; text-transform: uppercase; font-size: 1.1em; margin-bottom: 20px; }
-        .item { margin-bottom: 25px; }
-        .item-title { font-weight: bold; display: flex; justify-content: space-between; }
-        .location { font-style: italic; color: #555; }
-        .tags { margin-top: 10px; }
-        .tag { background: #f0f0f0; padding: 4px 10px; border-radius: 3px; font-size: 0.85em; margin-right: 5px; display: inline-block; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paolo Grazieschi — AI Researcher, LLM Agents</title>
+<meta name="description" content="Paolo Grazieschi — AI researcher specializing in LLM agents, RAG systems, and applied ML. PhD in Mathematics (Stochastic Analysis), University of Bath.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230b1120'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Georgia,serif' fill='%232dd4bf' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1120;
+    --navy-soft:#131c2e;
+    --ink:#1c2431;
+    --ink-soft:#4b5768;
+    --paper:#ffffff;
+    --paper-alt:#f6f7f9;
+    --line:#e6e8ec;
+    --teal:#0f9d8f;
+    --teal-bright:#2dd4bf;
+    --teal-dim:rgba(45,212,191,0.12);
+    --max:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.74rem;
+    font-weight:600;
+    color:var(--teal);
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;
+  }
+  .brand{font-size:1.05rem;color:var(--ink);text-decoration:none;}
+  .brand span{color:var(--teal);}
+  .navlinks{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .navlinks a{
+    text-decoration:none;font-size:0.88rem;font-weight:500;color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  .navlinks a:hover{color:var(--teal);}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.2s;}
+
+  @media (max-width:760px){
+    .navlinks{
+      position:absolute;top:64px;left:0;right:0;
+      background:var(--paper);
+      flex-direction:column;gap:0;
+      border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    .navlinks.open{max-height:400px;}
+    .navlinks a{display:block;padding:14px 28px;border-top:1px solid var(--line);}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    background:
+      radial-gradient(1100px 480px at 85% -10%, rgba(45,212,191,0.18), transparent 60%),
+      radial-gradient(700px 400px at 0% 0%, rgba(79,70,229,0.15), transparent 55%),
+      var(--navy);
+    color:#e7ebf3;
+    padding:110px 0 90px;
+  }
+  .hero .eyebrow{color:var(--teal-bright);}
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    margin:14px 0 6px;
+    color:#fff;
+    line-height:1.05;
+  }
+  .hero .role{
+    font-size:clamp(1.05rem,2vw,1.3rem);
+    color:#a9b3c4;
+    margin:0 0 26px;
+    font-weight:500;
+  }
+  .hero p.lede{
+    max-width:640px;
+    font-size:1.02rem;
+    line-height:1.75;
+    color:#c3cad8;
+    margin:0 0 34px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:8px;
+    font-size:0.9rem;font-weight:600;text-decoration:none;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn-primary{background:var(--teal-bright);color:#04211d;}
+  .btn-primary:hover{background:#5eead4;transform:translateY(-1px);}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.25);color:#e7ebf3;}
+  .btn-ghost:hover{border-color:var(--teal-bright);color:var(--teal-bright);transform:translateY(-1px);}
+
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:22px;
+    font-size:0.86rem;color:#9aa5b8;
+  }
+  .hero-meta span{display:flex;align-items:center;gap:7px;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-bright);flex:none;}
+
+  /* ---------- Sections ---------- */
+  section{padding:78px 0;}
+  section.alt{background:var(--paper-alt);}
+  .section-head{margin-bottom:44px;}
+  .section-head h2{font-size:1.7rem;color:var(--ink);margin:8px 0 0;}
+  .section-head .eyebrow{display:block;margin-bottom:4px;}
+
+  /* Profile */
+  #about p{font-size:1.05rem;line-height:1.85;color:var(--ink-soft);max-width:760px;}
+  #about p+p{margin-top:18px;}
+
+  /* Experience */
+  .timeline{border-left:2px solid var(--line);margin-left:6px;}
+  .tl-item{position:relative;padding:0 0 40px 32px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:'';position:absolute;left:-7px;top:4px;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--teal);
+  }
+  .tl-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:2px;}
+  .tl-role{font-weight:700;font-size:1.08rem;color:var(--ink);}
+  .tl-date{font-size:0.82rem;color:var(--teal);font-weight:600;letter-spacing:.02em;white-space:nowrap;}
+  .tl-org{font-size:0.92rem;color:var(--ink-soft);font-style:italic;margin-bottom:12px;}
+  .tl-item ul{margin:0;padding-left:20px;color:var(--ink-soft);font-size:0.95rem;line-height:1.7;}
+  .tl-item li+li{margin-top:6px;}
+
+  /* Skills */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:760px){.skills-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:520px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:22px 20px;
+  }
+  .skill-card h3{font-size:0.98rem;color:var(--ink);margin:0 0 12px;font-family:'Inter';font-weight:700;}
+  .skill-card .tags{display:flex;flex-wrap:wrap;gap:7px;}
+  .tag{
+    background:var(--teal-dim);color:var(--teal);
+    font-size:0.78rem;font-weight:600;
+    padding:5px 10px;border-radius:6px;
+  }
+
+  /* Education */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:600px){.edu-grid{grid-template-columns:1fr;}}
+  .edu-card{border:1px solid var(--line);border-radius:12px;padding:20px 22px;background:var(--paper);}
+  .edu-card .degree{font-weight:700;font-size:0.98rem;color:var(--ink);}
+  .edu-card .school{font-size:0.88rem;color:var(--ink-soft);margin-top:3px;}
+  .edu-card .years{font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:8px;}
+
+  /* Projects */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:700px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:24px;transition:border-color .15s ease, transform .15s ease;
+  }
+  .proj-card:hover{border-color:var(--teal-bright);transform:translateY(-2px);}
+  .proj-card .kicker{font-size:0.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);font-weight:700;}
+  .proj-card h3{font-family:'Inter';font-size:1.02rem;font-weight:700;color:var(--ink);margin:8px 0 8px;}
+  .proj-card p{font-size:0.92rem;color:var(--ink-soft);line-height:1.65;margin:0;}
+
+  /* Awards / Languages strip */
+  .strip{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  @media (max-width:600px){.strip{grid-template-columns:1fr;}}
+  .strip-card h3{font-size:0.98rem;font-family:'Inter';font-weight:700;margin:0 0 8px;color:var(--ink);}
+  .strip-card p{margin:0;color:var(--ink-soft);font-size:0.93rem;line-height:1.7;}
+
+  /* Contact / Footer */
+  footer{background:var(--navy);color:#c3cad8;padding:70px 0 34px;}
+  footer .eyebrow{color:var(--teal-bright);}
+  footer h2{color:#fff;font-size:1.9rem;margin:10px 0 14px;}
+  footer p.lede{max-width:520px;color:#a9b3c4;line-height:1.75;margin:0 0 30px;}
+  .contact-grid{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px;}
+  .contact-pill{
+    display:flex;align-items:center;gap:9px;
+    border:1px solid rgba(255,255,255,0.15);
+    padding:11px 18px;border-radius:8px;
+    font-size:0.88rem;text-decoration:none;color:#e7ebf3;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .contact-pill:hover{border-color:var(--teal-bright);color:var(--teal-bright);}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding-top:24px;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+    font-size:0.8rem;color:#7d8aa0;
+  }
+
+  /* Reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Paolo Grazieschi</h1>
-        <h2>Research Data Scientist</h2>
-    </header>
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Paolo <span>Grazieschi</span></a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-    <section id="profile">
-        <h3>Profile</h3>
-        <p>Proactive and results-focused, I leverage a strong foundation in Stochastic Analysis (PhD in Pure Mathematics) to drive innovation in the Agritech sector. My research is dedicated to developing and deploying predictive AI models for real-world applications, specifically building systems for advanced irrigation management and creating proactive AI agents for irrigation suggestion.</p>
-    </section>
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">AI Researcher — LLM Agents</p>
+    <h1>Paolo Grazieschi</h1>
+    <p class="role">Building agentic &amp; RAG systems, grounded in a PhD in Stochastic Analysis</p>
+    <p class="lede">I design and prototype LLM-based agents and retrieval pipelines, and work across the full lifecycle — from solution design and tool-use strategy through deployment, evaluation, and monitoring — to turn research into production systems.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary email-link" data-u="paolo.grazieschi" data-d="gmail.com" href="#">Contact</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/paolo-grazieschi-phd" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/ixplog" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="dot"></span>Based in Italy</span>
+    </div>
+  </div>
+</header>
 
-    <section id="experience">
-        <h3>Experience</h3>
-        <div class="item">
-            <div class="item-title">
-                <span>Senior Research Data Scientist</span>
-                <span>2024 — 2026</span>
-            </div>
-            <div class="location">Fondazione Bruno Kessler, Trento - Italy</div>
-            <ul>
-                <li>Led modeling ideation and implementation of forecasting models in the IRRITRE and AI Factory projects.</li>
-                <li>Developed AI agents for agricultural proactive and interactive suggestion workflows.</li>
-            </ul>
-        </div>
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Profile</span>
+      <h2>Research grounded, product minded</h2>
+    </div>
+    <p class="reveal">AI researcher with a focus on LLM agents, backed by a strong software and data-engineering foundation and deep ML expertise (PhD in Stochastic Analysis). I design and prototype agentic and RAG systems and work across the full lifecycle — from solution design and prompting/tool-use strategy through deployment, evaluation, and monitoring — to industrialize research into practical applications.</p>
+    <p class="reveal">I design and prototype agentic and RAG systems with modern LLM tooling (LangChain / LangGraph, commercial and open-source model APIs), and use agentic AI-assisted coding daily. I am actively deepening my work on retrieval infrastructure, evaluation, and guardrails.</p>
+  </div>
+</section>
 
-        <div class="item">
-            <div class="item-title">
-                <span>Data Scientist</span>
-                <span>2022 — 2024</span>
-            </div>
-            <div class="location">Prometeia, Milan - Italy</div>
-            <ul>
-                <li>Handled transactional time-series modeling, credit risk analysis, and NLP tasks for knowledge extraction.</li>
-                <li>Developed robust ML pipelines for production environments.</li>
-            </ul>
+<section id="experience" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Career</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <span class="tl-role">Senior Research Data Scientist</span>
+          <span class="tl-date">2024 — 2026</span>
         </div>
-    </section>
-
-    <section id="skills">
-        <h3>Skills</h3>
-        <div class="tags">
-            <span class="tag">Python</span> <span class="tag">PySpark</span> <span class="tag">PyTorch/Tensorflow</span> <span class="tag">LLM Programming</span> <span class="tag">LangChain/LangGraph</span> <span class="tag">AI Agents</span>
-        </div>
-        <div class="tags">
-            <span class="tag">Time Series Analysis</span> <span class="tag">Prefect/Kedro</span> <span class="tag">Docker</span> <span class="tag">Git/GitHub</span>
-        </div>
-    </section>
-
-    <section id="education">
-        <h3>Education</h3>
-        <div class="item">
-            <div class="item-title">
-                <span>PhD of Science in Mathematics</span>
-                <span>University of Bath, UK | 2018 — 2022</span>
-            </div>
-            <p>Proved convergence of the Ising-Kac interacting particle system to the $\Phi^4$ stochastic partial differential equation.</p>
-        </div>
-        <div class="item">
-            <div class="item-title">
-                <span>MSc in Mathematics</span>
-                <span>University of Warwick, UK | 2017 — 2018</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item-title">
-                <span>MSc in Mathematics</span>
-                <span>University of Pisa, Italy | 2014 — 2017</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item-title">
-                <span>BSc in Mathematics</span>
-                <span>University of Perugia, Italy | 2011 — 2014</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="publications">
-        <h3>Projects & Publications</h3>
+        <div class="tl-org">Fondazione Bruno Kessler, Trento</div>
         <ul>
-            <li><strong>Time Series Models for Agritech:</strong> Soil moisture forecasting for irrigation prediction and scheduling in Trentino, Italy.</li>
-            <li><strong>The Ising-Kac Model:</strong> publications and PhD thesis on the convergence to the $\Phi^4$ equation.</li>
-            <li><strong>Stochastic Models of the Human Brain:</strong> Development of an intergrate-and-fire model with theoretical and numerical validation.</li>
+          <li>Design and prototype LLM-based AI agents with tool-use and multi-step reasoning for proactive, interactive agronomic suggestion workflows over live sensor and forecast data.</li>
+          <li>Prototype RAG and retrieval pipelines integrating LLM APIs (OpenAI / Anthropic) to ground agent responses in domain data.</li>
+          <li>Own end-to-end ML services (ingestion → deployment → monitoring) for soil-moisture and irrigation forecasting within the IRRITRE and AI Factory projects; package and serve with Docker/Kubernetes and track experiments with MLflow.</li>
+          <li>Run GPU workloads on the CINECA Leonardo HPC cluster (SLURM, uv-managed environments) for model training and experimentation.</li>
+          <li>Developing a state-of-the-art concept-drift detection algorithm based on the Wasserstein metric, targeting robust monitoring of distribution shift in ML models (research in progress).</li>
         </ul>
-    </section>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <span class="tl-role">Data Scientist</span>
+          <span class="tl-date">2022 — 2024</span>
+        </div>
+        <div class="tl-org">Prometeia, Milan</div>
+        <ul>
+          <li>Built and deployed robust ML pipelines for production, including NLP-based knowledge extraction from documents, transactional time-series modeling, and credit-risk analysis.</li>
+          <li>Applied traditional ML methods (regression, classification, anomaly detection) to industrial financial data with reliability and traceability requirements.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <span class="tl-role">Machine Learning Research Intern</span>
+          <span class="tl-date">Sep – Dec 2020</span>
+        </div>
+        <div class="tl-org">MediaTek Research, UK</div>
+        <ul>
+          <li>Researched meta-learning (MAML) methods for efficient model adaptation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Toolbox</span>
+      <h2>Core skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3>LLM &amp; Agents</h3>
+        <div class="tags">
+          <span class="tag">RAG</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">OpenAI API</span><span class="tag">Anthropic API</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Languages &amp; ML</h3>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">scikit-learn</span><span class="tag">C++</span><span class="tag">C#</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>MLOps &amp; Deploy</h3>
+        <div class="tags">
+          <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">MLflow</span><span class="tag">Prefect</span><span class="tag">Kedro</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Cloud &amp; HPC</h3>
+        <div class="tags">
+          <span class="tag">Azure</span><span class="tag">AWS</span><span class="tag">SLURM</span><span class="tag">uv</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>AI-Assisted Engineering</h3>
+        <div class="tags">
+          <span class="tag">Claude Code</span><span class="tag">Codex</span><span class="tag">Agentic coding</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Collaboration</h3>
+        <div class="tags">
+          <span class="tag">Git &amp; GitHub</span><span class="tag">Code review</span><span class="tag">Production handover</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Background</span>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="degree">PhD, Mathematics</div>
+        <div class="school">University of Bath</div>
+        <div class="years">2018 — 2022</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="degree">MSc, Mathematics</div>
+        <div class="school">University of Warwick</div>
+        <div class="years">2017 — 2018</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="degree">MSc, Mathematics</div>
+        <div class="school">University of Pisa</div>
+        <div class="years">2014 — 2017</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="degree">BSc, Mathematics</div>
+        <div class="school">University of Perugia</div>
+        <div class="years">2011 — 2014</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Selected work</span>
+      <h2>Publications &amp; projects</h2>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <div class="kicker">Research prototype, FBK</div>
+        <h3>LLM Agents for Agronomic Decision Support</h3>
+        <p>LLM-based agents with tool-use and RAG over sensor/forecast data, generating proactive agronomic suggestions.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="kicker">Research in progress</div>
+        <h3>Concept Drift Detection</h3>
+        <p>Developing a state-of-the-art concept-drift detection algorithm based on the Wasserstein metric, for robust monitoring of distribution shift in machine-learning models.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="kicker">Publications at ML conferences</div>
+        <h3>Time-Series Models for Agritech</h3>
+        <p>Soil-moisture forecasting models for Trentino, Italy, built on operational sensor data.</p>
+      </div>
+      <div class="proj-card reveal">
+        <div class="kicker">PhD thesis &amp; journal publications</div>
+        <h3>The Ising-Kac Model</h3>
+        <p>Proved convergence of the Ising-Kac particle system to the &Phi;<sup>4</sup> stochastic PDE.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="more" class="alt">
+  <div class="wrap">
+    <div class="strip">
+      <div class="strip-card reveal">
+        <h3>Award</h3>
+        <p><strong>Best Demo Poster Award</strong> — Fondazione Bruno Kessler, Trento. Recognized for leadership and consistent quality output.</p>
+      </div>
+      <div class="strip-card reveal">
+        <h3>Languages</h3>
+        <p>Italian (native), English (fluent), German (basic, A2–B1)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Get in touch</h2>
+    <p class="lede">Reach out by email or connect on LinkedIn / GitHub.</p>
+    <div class="contact-grid">
+      <a class="contact-pill email-link" data-u="paolo.grazieschi" data-d="gmail.com" href="#">Email</a>
+      <a class="contact-pill" href="https://linkedin.com/in/paolo-grazieschi-phd" target="_blank" rel="noopener">linkedin.com/in/paolo-grazieschi-phd</a>
+      <a class="contact-pill" href="https://github.com/ixplog" target="_blank" rel="noopener">github.com/ixplog</a>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year"></span> Paolo Grazieschi</span>
+      <span>Trento, Italy</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('.email-link').forEach(function(el){
+    var addr = el.getAttribute('data-u') + '@' + el.getAttribute('data-d');
+    el.href = 'mailto:' + addr;
+    if (el.classList.contains('contact-pill')) { el.textContent = addr; }
+  });
+
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navlinks');
+  toggle.addEventListener('click', function(){ links.classList.toggle('open'); });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); });
+  });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
 
 </body>
-
 </html>
-

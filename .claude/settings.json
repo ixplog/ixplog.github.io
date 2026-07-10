@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"\" \"c:\\\\Users\\\\paolo\\\\Documents\\\\GitHub\\\\ixplog.github.io\\\\index.html\")"
+    ]
+  }
+}
